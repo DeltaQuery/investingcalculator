@@ -10,6 +10,7 @@ import calculateReturns from "../../hooks/calculateReturns"
 import GrowthChart from "../growth-chart/growth-chart"
 import { PieChart } from "../pie-chart/pie-chart"
 import { AssetChart } from "../asset-chart/asset-chart"
+import FactsBox from "../facts-box/facts-box"
 import "./investment-info.css"
 
 export default function InvestmentInfo() {
@@ -28,12 +29,12 @@ export default function InvestmentInfo() {
     const [dateInputDisabled, setDateInputDisabled] = React.useState(true)
 
     React.useEffect(() => {
-        setReturnResults(calculateReturns({ setTotalContributions, setMinDate, setMaxDate, setDateInputDisabled, asset, startingDate, endingDate, contributionFreq, setContributionFreq, startingAmount, addContribution, setTotalGrowth }))
+        setReturnResults(calculateReturns({ setTotalContributions, totalContributions, setMinDate, setMaxDate, setDateInputDisabled, asset, startingDate, endingDate, contributionFreq, setContributionFreq, startingAmount, addContribution, totalGrowth, setTotalGrowth }))
     }, [asset, startingDate, endingDate, contributionFreq, startingAmount, addContribution])
 
     return (
         <React.Fragment>
-            <h4>Investment Calculator:</h4>
+            <h2 className="mt-2 mb-2">Investment Calculator</h2>
             <section className="info-components-container">
                 <StartingAmount
                     startingAmount={startingAmount}
@@ -79,30 +80,51 @@ export default function InvestmentInfo() {
             </section>
 
             <section className="total-growth-section">
-            <TotalGrowth
-                totalGrowth={totalGrowth}
-            />    
-            </section>
-
-            <div className="charts-container">
-                <GrowthChart
-                    returnResults={returnResults}
-                    startingAmount={startingAmount}
-                />
-
-                <PieChart
-                    totalContributions={totalContributions}
+                <TotalGrowth
                     totalGrowth={totalGrowth}
                     startingAmount={startingAmount}
-                    assetName={assetName}
+                    totalContributions={totalContributions}
                 />
-            </div>
+            </section>
 
-            <div className="line-container">
-                <AssetChart
+
+
+
+            <div className="charts-container d-flex flex-lg-row flex-column flex-wrap">
+                <section className="d-lg-block d-sm-flex col-lg-8 col-sm-12 justify-content-center mb-4">
+                    <GrowthChart
+                        returnResults={returnResults}
+                        startingAmount={startingAmount}
+                    />
+                </section>
+
+                <section className="d-flex col-lg-4 col-12 justify-content-center mb-4">
+                    <PieChart
+                        totalContributions={totalContributions}
+                        totalGrowth={totalGrowth}
+                        startingAmount={startingAmount}
+                        assetName={assetName}
+                        returnResults={returnResults}
+                    />
+                </section>
+
+                <section className="order-lg-1 order-2 line-container d-lg-block d-sm-flex col-lg-8 col-sm-12 justify-content-center mb-4">
+                    <AssetChart
+                        returnResults={returnResults}
+                        assetName={assetName}
+                    />
+                </section>
+
+                <section className="order-lg-2 order-1 d-flex col-lg-4 col-12 justify-content-center mb-4">
+                    <FactsBox
+                    startingAmount={startingAmount}
+                    totalContributions={totalContributions}
+                    totalGrowth={totalGrowth}
                     returnResults={returnResults}
-                    assetName={assetName}
-                />
+                    endingDate={endingDate}
+                    contributionFreq={contributionFreq}
+                    />
+                </section>
             </div>
         </React.Fragment>
     );

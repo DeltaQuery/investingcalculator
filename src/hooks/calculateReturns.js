@@ -1,10 +1,10 @@
-import React from "react"
-import TotalGrowth from "../components/total-growth/total-growth"
+import roundNumber from "./roundNumber";
 
 export default function calculateReturns({ startingDate, endingDate, contributionFreq, setTotalContributions, startingAmount, addContribution, asset, setMinDate, setMaxDate, setDateInputDisabled, setTotalGrowth }) {
 
      //asigno valor de amazon.monthly_Time_series a variable
      const assetTicket = { ...asset }
+
      //console.log(assetTicket)
      //formateo asset para que arroje keys con formato YYYY-MM ya que el dia no me interesa
      const formatAsset = (asset) => {
@@ -30,7 +30,6 @@ export default function calculateReturns({ startingDate, endingDate, contributio
         setMaxDate(minAndMaxDates.maxDate)
         setDateInputDisabled(false)
      }
-     
      //creo Arr con fechas que se buscaran en Asset para trazar evolucion del valor del activo
      const createDateArr = (startingDate, contributionFreq) => {
          //parametros iniciales antes de bucle for
@@ -89,8 +88,13 @@ export default function calculateReturns({ startingDate, endingDate, contributio
          for (let [key, value] of Object.entries(asset)) {
              for (let i = 0; i < datesArr.length; i++) {
                  if (key === datesArr[i]) {
-                     asset[key].initialSumGrowth = ((startingAmount / asset[startingDate]["assetPrice"]) * asset[key]["assetPrice"])
-                     newAsset[key] = value
+                     try{
+                        asset[key]["assetPrice"] = roundNumber(asset[key]["assetPrice"])
+                     asset[key].initialSumGrowth = roundNumber(((startingAmount / asset[startingDate]["assetPrice"]) * asset[key]["assetPrice"]))
+                     newAsset[key] = value 
+                     }catch(error){
+                     }
+                     
                  }
              }
          }
@@ -185,11 +189,6 @@ export default function calculateReturns({ startingDate, endingDate, contributio
      console.log(arrWithVal)
      console.log("new dates arr")
      console.log(newDatesArr)*/
-
-    const roundNumber = (num, decimalPlaces = 0) => {
-        var p = Math.pow(10, decimalPlaces);
-        return Math.round(num * p) / p;
-    }
 
      setTotalContributions(arrWithContributions[arrWithContributions.length -1])
      setTotalGrowth(roundNumber(arrWithInterest[arrWithInterest.length - 1]))   

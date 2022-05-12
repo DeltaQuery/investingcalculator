@@ -7,10 +7,19 @@ import { INTC } from "../../market-data/intel"
 import { MSFT } from "../../market-data/microsoft"
 import { QQQ } from "../../market-data/qqq"
 import { SPY } from "../../market-data/spy"
+import { BAC } from "../../market-data/bac"
+import { BRKA } from "../../market-data/brka"
+import { HD } from "../../market-data/hd"
+import { JNJ } from "../../market-data/jnj"
+import { MCD } from "../../market-data/mcd"
+import { PG } from "../../market-data/pg"
+import { V } from "../../market-data/v"
+import { WMT } from "../../market-data/wmt"
+import { XOM } from "../../market-data/xom"
 
-export default function Asset({ asset, setAsset, setStartingDate, setAssetName }) {
+export default function Asset({ setAsset, setStartingDate, setAssetName }) {
     //hay que averiguar la forma de iterar este Arr con todos los assets incluidos en el futuro
-    const assets = { AMZN, AAPL, DIS, GOOGL, INTC, MSFT, QQQ, SPY }
+    const assets = { AMZN, AAPL, DIS, GOOGL, INTC, MSFT, QQQ, SPY, BAC, BRKA, HD, JNJ, MCD, PG, V, WMT, XOM }
 
     const handleChange = evt => {
         setStartingDate("")
@@ -20,7 +29,6 @@ export default function Asset({ asset, setAsset, setStartingDate, setAssetName }
             setAssetName(key)
             } 
         }    
-        console.log(evt.target.value)
     }
 
     return (
@@ -38,6 +46,15 @@ export default function Asset({ asset, setAsset, setStartingDate, setAssetName }
             <option value="DIS">Disney</option>
             <option value="GOOGL">Google</option>
             <option value="intc">Intel</option>
+            <option value="BAC">Bank of America</option>
+            <option value="BRK-A">Berkshire Hathaway</option>
+            <option value="HD">Home Depot</option>
+            <option value="JNJ">J & J</option>
+            <option value="MCD">McDonald's</option>
+            <option value="PG">Procter & Gamble</option>
+            <option value="V">Visa</option>
+            <option value="WMT">Walmart</option>
+            <option value="XOM">Exxon</option>
             </select>
             </section>
           </React.Fragment> 

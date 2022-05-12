@@ -4,7 +4,6 @@ export default function ContributionFreq({ contributionFreq, setContributionFreq
 
     const handleChange = evt => {
         setContributionFreq(evt.target.value)
-        //console.log(contributionFreq)
     }
 
     return (

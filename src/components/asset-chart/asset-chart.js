@@ -46,6 +46,7 @@ export function AssetChart( {returnResults, assetName} ) {
             text: "Asset price evolution",
           },
         },
+        maintainAspectRatio: false,
       };
       
       const labels = assetArr.map( data => data[0]);
@@ -61,9 +62,11 @@ export function AssetChart( {returnResults, assetName} ) {
             backgroundColor: "rgb(32, 167, 226)",
           }
         ],
+    maintainAspectRatio: false,
       };
 
-  return <div className="line-chart-container">
-    <Line options={options} data={data} />
-    </div>
+  return  <Line 
+    options={options}
+    data={data}
+    />
 }

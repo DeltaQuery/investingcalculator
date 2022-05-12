@@ -30,6 +30,7 @@ export default function GrowthChart({ returnResults, startingAmount }) {
         stacked: true,
       },
     },
+    maintainAspectRatio: false,
   };
 
   let labels = ["2017", "2018", "2019", "2020", "2021"]
@@ -71,8 +72,8 @@ export default function GrowthChart({ returnResults, startingAmount }) {
         },
       },
     ],
+    maintainAspectRatio: false,
   };
-
 
   return <div className="growth-bar-container">
     <Bar

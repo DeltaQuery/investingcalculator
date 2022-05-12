@@ -1,9 +1,3 @@
 .pie-chart-container {
-    display: flex;
-    justify-content: center;
-    width:30%;
-}
-
-.pie-centered-container {
-    width: 90%;
+    max-width: 240px;
 }
