@@ -27,15 +27,16 @@ export default function InvestmentInfo() {
     const [minDate, setMinDate] = React.useState("2000-01")
     const [maxDate, setMaxDate] = React.useState("2022-01")
     const [dateInputDisabled, setDateInputDisabled] = React.useState(true)
+    const [inputGlow, setInputGlow] = React.useState(0)
 
     React.useEffect(() => {
-        setReturnResults(calculateReturns({ setTotalContributions, totalContributions, setMinDate, setMaxDate, setDateInputDisabled, asset, startingDate, endingDate, contributionFreq, setContributionFreq, startingAmount, addContribution, totalGrowth, setTotalGrowth }))
+        setReturnResults(calculateReturns({ setTotalContributions, setMinDate, setMaxDate, setDateInputDisabled, asset, startingDate, endingDate, contributionFreq, setContributionFreq, startingAmount, addContribution, setTotalGrowth }))
     }, [asset, startingDate, endingDate, contributionFreq, startingAmount, addContribution])
 
     return (
         <React.Fragment>
             <h2 className="mt-2 mb-2">Investment Calculator</h2>
-            <section className="info-components-container">
+            <section className="info-components-section">
                 <StartingAmount
                     startingAmount={startingAmount}
                     setStartingAmount={setStartingAmount}
@@ -63,6 +64,8 @@ export default function InvestmentInfo() {
                     setAsset={setAsset}
                     setStartingDate={setStartingDate}
                     setAssetName={setAssetName}
+                    inputGlow={inputGlow}
+                    setInputGlow={setInputGlow}
                 />
 
                 <StartingDate
@@ -71,6 +74,8 @@ export default function InvestmentInfo() {
                     minDate={minDate}
                     maxDate={maxDate}
                     dateInputDisabled={dateInputDisabled}
+                    inputGlow={inputGlow}
+                    setInputGlow={setInputGlow}
                 />
 
                 <EndingDate
@@ -78,6 +83,8 @@ export default function InvestmentInfo() {
                     setEndingDate={setEndingDate}
                 />
             </section>
+
+        
 
             <section className="total-growth-section">
                 <TotalGrowth
@@ -91,14 +98,14 @@ export default function InvestmentInfo() {
 
 
             <div className="charts-container d-flex flex-lg-row flex-column flex-wrap">
-                <section className="d-lg-block d-sm-flex col-lg-8 col-sm-12 justify-content-center mb-4">
+                <section className="chart d-lg-block d-sm-flex col-lg-8 col-sm-12 justify-content-center mb-4">
                     <GrowthChart
                         returnResults={returnResults}
                         startingAmount={startingAmount}
                     />
                 </section>
 
-                <section className="d-flex col-lg-4 col-12 justify-content-center mb-4">
+                <section className="chart d-flex col-lg-4 col-12 justify-content-center mb-4">
                     <PieChart
                         totalContributions={totalContributions}
                         totalGrowth={totalGrowth}
@@ -108,14 +115,14 @@ export default function InvestmentInfo() {
                     />
                 </section>
 
-                <section className="order-lg-1 order-2 line-container d-lg-block d-sm-flex col-lg-8 col-sm-12 justify-content-center mb-4">
+                <section className="chart line-container order-lg-1 order-2 d-lg-block d-sm-flex col-lg-8 col-sm-12 justify-content-center mb-4">
                     <AssetChart
                         returnResults={returnResults}
                         assetName={assetName}
                     />
                 </section>
 
-                <section className="order-lg-2 order-1 d-flex col-lg-4 col-12 justify-content-center mb-4">
+                <section className="chart order-lg-2 order-1 d-flex col-lg-4 col-12 justify-content-center mb-4">
                     <FactsBox
                     startingAmount={startingAmount}
                     totalContributions={totalContributions}
