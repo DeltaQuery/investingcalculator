@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/calculator/static/css/main.20413331.css",
-    "main.js": "/calculator/static/js/main.6efc5928.js",
-    "static/js/787.a174f9e5.chunk.js": "/calculator/static/js/787.a174f9e5.chunk.js",
-    "index.html": "/calculator/index.html",
-    "main.20413331.css.map": "/calculator/static/css/main.20413331.css.map",
-    "main.6efc5928.js.map": "/calculator/static/js/main.6efc5928.js.map",
-    "787.a174f9e5.chunk.js.map": "/calculator/static/js/787.a174f9e5.chunk.js.map"
+    "main.css": "/DeltaQuery/investingcalculator/static/css/main.44c29ff8.css",
+    "main.js": "/DeltaQuery/investingcalculator/static/js/main.1fce1f9b.js",
+    "index.html": "/DeltaQuery/investingcalculator/index.html",
+    "main.44c29ff8.css.map": "/DeltaQuery/investingcalculator/static/css/main.44c29ff8.css.map",
+    "main.1fce1f9b.js.map": "/DeltaQuery/investingcalculator/static/js/main.1fce1f9b.js.map"
   },
   "entrypoints": [
-    "static/css/main.20413331.css",
-    "static/js/main.6efc5928.js"
+    "static/css/main.44c29ff8.css",
+    "static/js/main.1fce1f9b.js"
   ]
 }
