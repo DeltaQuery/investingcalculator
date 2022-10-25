@@ -14,7 +14,7 @@ export default function ContributionFreq({ contributionFreq, setContributionFreq
             value={contributionFreq}
             onChange={handleChange}>
             <option value="1">Monthly</option>
-            <option value="12">Annually</option>
+            <option value="12" disabled>Annually</option>
             </select>
             </section>
           </React.Fragment> 

@@ -3,7 +3,7 @@ import React from "react"
 export default function StartingAmount({ startingAmount, setStartingAmount }) {
 
     const handleChange = evt => {
-        setStartingAmount(evt.target.value)
+        setStartingAmount(Number(evt.target.value))
     }
 
     return (

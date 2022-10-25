@@ -4,7 +4,7 @@ import setValColor from "../../hooks/setValColor"
 import formatNumber from "../../hooks/formatNumber"
 
 export default function FactsBox({ startingAmount, totalContributions, totalGrowth, returnResults, contributionFreq }) {
-    let initialInvestment = startingAmount + totalContributions
+    let initialInvestment = Number(startingAmount) + Number(totalContributions)
     let netInterest = 0
     let CAGR = 0
     let ROI = 0
@@ -35,16 +35,25 @@ export default function FactsBox({ startingAmount, totalContributions, totalGrow
         }
 
         CAGR = roundNumber((((totalGrowth/(startingAmount + totalContributions)) ** (1/ period)) - 1) * 100)
+        console.log("---------------")
+        console.log("total growth ", totalGrowth)
+        console.log("startingAmount ", startingAmount)
+        console.log("total contribs ", totalContributions)
+        console.log("period ", period)
         if(isNaN(CAGR)){
             CAGR = 0
         }
+        if(CAGR < 0) CAGR = 0
+        
         ROI = roundNumber(((totalGrowth - (startingAmount+totalContributions)) / (startingAmount+totalContributions)) * 100)
         if(isNaN(ROI)){
             ROI = 0
         }
+
         startingAssetValue = returnResults.arrWithVal[0]
         finalAssetValue = returnResults.arrWithVal[returnResults.arrWithVal.length - 1]
     } catch(error){
+        console.log("error")
     }
 
     return (
